@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>slot</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<div id="app">
+<!-- 		<form-helper
+			title="로그인하기"
+			button-name="로그인"
+			v-on:submit="login">
+			<label>
+				아이디: <input type="text">
+			</label>
+			<label>
+				비밀번호: <input type="password">
+			</label>
+		</form-helper>
+		<form-helper
+			title="회원가입하기"
+			button-name="회원가입"
+			v-on:submit="signup">
+			<label>
+				아이디: <input type="text">
+			</label>
+			<label>
+				비밀번호: <input type="password">
+			</label>
+		</form-helper> -->
+
+		<app-layout>
+			<h1 slot="header">헤더부분</h1>
+			<div slot="contents">컨텐츠부분</div>
+			<footer slot="footer">푸터부분</footer>
+		</app-layout>
+	</div>
+	<script src="/vue.js"></script>
+<!-- 	<template id="form-helper-template">
+		<form action="" v-on:submit.prevent="$emit('submit')">
+			<h1>{{ title }}</h1>
+			<slot></slot>
+			<button>{{ buttonName }}</button>
+		</form>
+	</template> -->
+
+	<template id="app-layout-template">
+		<div>
+			<slot name="header"></slot>
+			<slot name="contents"></slot>
+			<slot name="footer"></slot>
+		</div>
+	</template>
+	<script>
+		Vue.component('form-helper', {
+			template: '#form-helper-template',
+			props: ['title', 'buttonName']
+		});
+
+		Vue.component('app-layout', {
+			template: '#app-layout-template'
+		});
+
+		new Vue({
+			el: '#app',
+			methods: {
+				login: function() {
+					alert('로그인 됨!!!');
+				},
+				signup: function() {
+					alert('가입됨!!!');
+				}
+			}
+		});
+	</script>
+</body>
+</html>

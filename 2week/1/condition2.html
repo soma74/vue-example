@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<div id="app">
+		<div v-if="isHidden">내가 보일까?</div>
+		<div v-else>내가 보일걸!</div>
+		<button @click="toggle">반전</button>
+	</div>
+	<script src="/vue.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				isHidden: false
+			},
+			methods: {
+				toggle: function() {
+					this.isHidden = this.isHidden === true ? false : true;
+				}
+			}
+		});
+	</script>
+</body>
+</html>

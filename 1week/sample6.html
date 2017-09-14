@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Vuew.js Example</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<div id="app">
+		{{ message }}
+	</div>
+	<button onclick="removeInstance()">Alert</button>
+
+	<script src="/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				message: 'Hello, Vue.js!'
+			},
+			beforeCreate: function() {
+				alert('beforeCreate: ' + this.message);
+			},
+			created: function() {
+				alert('created: ' + this.message);
+			},
+			beforeMount: function() {
+				alert('beforeMount: ' + this.message);
+			},
+			mounted: function() {
+				alert('mounted');
+			},
+			beforeDestroy: function() {
+				alert('beforeDestroy');
+			},
+			destroyed: function() {
+				alert('destroyed');
+			}
+		});
+
+		function removeInstance()
+		{
+			vm.$destroy();
+			console.log(vm);
+		}
+	</script>
+</body>
+</html>

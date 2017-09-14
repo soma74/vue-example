@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>범위를 가지는 slot</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<div id="app">
+		<sample-component>
+			<template scope="props">
+				<li>{{ props.fruitName }} : {{ props.price }}</li>
+			</template>
+		</sample-component>
+	</div>
+	<script src="/vue.js"></script>
+	<template id="sample-component-template">
+		<div>
+			<ul>
+				<slot v-for="item in fruits" :fruit-name="item.name" :price="item.price"></slot>
+			</ul>
+		</div>
+	</template>
+	<script>
+		Vue.component('sample-component', {
+			template: '#sample-component-template',
+			data: function() {
+				return {
+					fruits: [
+						{ name: 'Apple', price: 1500 },
+						{ name: 'Banana', price: 900 }
+					]
+				};
+			}
+		});
+
+		new Vue({
+			el: '#app'
+		});
+	</script>
+</body>
+</html>

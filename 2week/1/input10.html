@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>수식어 lazy</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<div id="app">
+		<!-- lazy 수식어를 붙이면 change 이벤트가 발생할 때 양방향 바인딩이 동작함 -->
+		<input type="text" v-model.lazy="message"><br>
+		<div>{{ message }}</div>
+	</div>
+	<script src="/vue.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				message: 'Hello, Vue.js!'
+			}
+		});
+	</script>
+</body>
+</html>

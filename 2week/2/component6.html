@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>템플릿 분리</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<div id="app">
+		<todos-component></todos-component>
+	</div>
+
+	<script src="/vue.js"></script>
+
+	<!-- 긴 템플릿의 경우 id 를 이용하여 분리가 가능합니다. -->
+	<!-- <script type="text/x-template" id="todo-component">
+		<div>
+			<h1>2017년의 목표</h1>
+			<ul>
+				<li v-for="todo in todos">{{ todo }}</li>
+			</ul>
+		</div>
+	</script> -->
+	
+	<!-- template DOM을 사용해도 됩니다. -->
+	<template id="todo-component">
+		<div>
+			<h1>2017년의 목표</h1>
+			<ul>
+				<li v-for="todo in todos">{{ todo }}</li>
+			</ul>
+		</div>
+	</template>
+
+	<script>
+		var todoComponent = {
+			template: '#todo-component',
+			data: function() {
+				return {
+					todos: [
+						'열심히 일하기',
+						'효도하기',
+						'연애하기'
+					]
+				};
+			}
+		};
+
+		new Vue({
+			el: '#app',
+
+			// components 옵션을 통해 자식 컴포넌트를 축할 수 있습니다.
+			components: {
+				'todos-component': todoComponent
+			}
+		});
+	</script>
+</body>
+</html>

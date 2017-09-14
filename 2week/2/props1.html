@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>콤포넌트 > props</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<div id="app">
+		<!-- message 라는 이름의 속성으로 데이터를 전달합니다. -->
+		<simple-component message="Hello, Vue!"></simple-component>
+	</div>
+	<script src="/vue.js"></script>
+	<script>
+		var simpleComponent = {
+			// props 옵션을 통해 부모의 데이터를 받을 수 있습니다.
+			props: ['message'],
+
+			// template에서 props 데이터를 사용할 수 있습니다.
+			template: '<div>{{ message }}</div>'
+		};
+
+		new Vue({
+			el: '#app',
+			components: {
+				'simple-component': simpleComponent
+			}
+		});
+	</script>
+</body>
+</html>

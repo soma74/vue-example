@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Event Bus</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<div id="app">
+		<counter :initial-counter="counter"></counter>
+		<checkbox></checkbox>
+	</div>
+	<script src="/vue.js"></script>
+	<script>
+		Vue.component('counter', {
+			props: ['initialCounter'],
+			template: '<button @click="addCounter">{{ counter }} </button>',
+			data: function() {
+				return { counter: this.initialCounter };
+			},
+			methods: {
+				addCounter: function() {
+					this.counter += 1;
+					if(this.counter >= 5)
+					{
+						// checked 이벤트를 발생시킵니다. 
+						bus.$emit('c', true);
+					}
+				}
+			}
+		});
+
+		Vue.component('checkbox', {
+			template: '<input type="checkbox" :checked="checked" value="hello, Vue!" disabled>',
+			data: function() {
+				return { checked: false };
+			},
+			mounted: function () {
+				// checked 이벤트가 발생할 경우 실행됩니다.
+				bus.$on('c', function(value) {
+					this.checked = value;
+				}.bind(this));
+			}
+		});
+
+		// 이벤트 버스용 빈 Vue 인스턴스 생성
+		var bus = new Vue();
+
+		new Vue({
+			el: '#app',
+			data: {
+				counter: 0
+			}
+		});
+	</script>
+</body>
+</html>

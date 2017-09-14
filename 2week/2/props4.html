@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>콤포넌트 > 동적 props : 주의할 점(data를 이용해서 변경) (부모의 값은 변경하지 말자)</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<div id="app">
+		<simple-component :initial-counter="counter"></simple-component>
+	</div>
+	<script src="/vue.js"></script>
+	<script>
+		var simpleComponent = {
+			props: ['initialCounter'],
+			template: '<button @click="addCounter">{{ counter }} </button>',
+			data: function() {
+				return {
+					counter: this.initialCounter
+				};
+			},
+			methods: {
+				addCounter: function() {
+					this.counter += 1;
+				}
+			}
+		};
+
+		new Vue({
+			el: '#app',
+			data: {
+				counter: 0
+			},
+			components: {
+				'simple-component': simpleComponent
+			}
+		});
+	</script>
+</body>
+</html>

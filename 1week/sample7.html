@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<div id="app">
+		<div>{{ text }}</div>
+		<div>{{ reverseText }}</div>
+		<button @click="alertNow">현재 시각은?</button>
+	</div>
+
+	<script src="/vue.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				text: 'Hello, World',
+			},
+			methods: {
+				alertNow: function() {
+					alert(this.now());
+				},
+				now: function() {
+					return Date.now();
+				},
+			},
+			computed: {
+				reverseText: function() {
+					return this.text.split('').reverse().join('');
+				},
+				// now: function() {
+				// 	return Date.now();
+				// },
+			},
+		});
+	</script>
+	
+</body>
+</html>

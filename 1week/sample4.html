@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Example</title>
+	<link rel="stylesheet" href="">
+	<style>
+		#box1 {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}		
+		#box2 {
+			width: 50px;
+			height: 50px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div id="box1" @click="alertMessage('box1')">
+			<div id="box2" @click.stop="alertMessage('box2')">
+			stop이라는 이벤트 수식어를 사용하면 event.stopProgagation() 과 같은 효과를 얻을 수 있습니다.
+			</div>
+		</div>
+	</div>
+
+	<!-- <script
+			  src="//code.jquery.com/jquery-3.2.1.min.js"
+			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			  crossorigin="anonymous"></script> -->
+	<script src="/vue.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				x: 0,
+				y: 0
+			},
+			methods: {
+				alertMessage: function(message) {
+					alert(message);
+				}
+			}
+		});
+	</script>
+</body>
+</html>

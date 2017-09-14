@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css" media="screen">
+		#box {
+			width: 100px;
+			height: 100px;
+			background-color: black;
+			transition: width 2s;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div id="box"></div>
+	</div>
+	<script src="/vue.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			mounted: function() {
+				var app = this.$el;
+				var box = app.querySelector('#box');
+				box.onclick = function() {
+					box.style.width = '200px';
+				};
+			}
+		});
+	</script>
+</body>
+</html>

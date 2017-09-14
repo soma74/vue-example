@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>수식어 number</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<div id="app">
+		<!-- number 수식어를 붙이면 Number 형태로 변환하여 바인딩 됨 -->
+		<input type="text" v-model.number="age"><br>
+		<div>{{ age }}살</div>
+	</div>
+	<script src="/vue.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				age: 24
+			}
+		});
+	</script>
+</body>
+</html>

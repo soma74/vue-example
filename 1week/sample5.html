@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Example</title>
+	<link rel="stylesheet" href="">
+	<style>
+		#box1 {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}		
+		#box2 {
+			width: 50px;
+			height: 50px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<input @keyup.ctrl.enter="save"> 키수식어
+		<div id="box"
+			@mousedown.left="alertMessage('left')"
+			@mousedown.middle="alertMessage('middle')"
+			@mousedown.right="alertMessage('right')">마우스 수식어
+		</div> 
+	</div>
+
+	<!-- <script
+			  src="//code.jquery.com/jquery-3.2.1.min.js"
+			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			  crossorigin="anonymous"></script> -->
+	<script src="/vue.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			methods: {
+				save: function() {
+					confirm('저장하시겠습니까?');
+				},
+				alertMessage: function(message) {
+					alert(message);
+				}
+			}
+		});
+	</script>
+</body>
+</html>

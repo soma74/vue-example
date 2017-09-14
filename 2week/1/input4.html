@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>다수의 input[type=checkbox]</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<div id="app">
+		<!-- v-model을 통해 양방향 바인딩 적용 -->
+		One: <input type="checkbox" v-model="checked" value="One"><br>
+		Two: <input type="checkbox" v-model="checked" value="Two"><br>
+		Three: <input type="checkbox" v-model="checked" value="Three"><br>
+		Four: <input type="checkbox" v-model="checked" value="Four"><br>
+		<div>{{ checked }}</div>
+	</div>
+	<script src="/vue.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				checked: []
+			}
+		});
+	</script>
+</body>
+</html>

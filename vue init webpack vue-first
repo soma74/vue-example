@@ -1,0 +1,9 @@
+vue init webpack vue-first
+cd vue-first
+npm install
+npm run dev
+
+
+npm install --save axios
+npm install --save vue-axios
+npm install --save-dev sass-loader node-sass

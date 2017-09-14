@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<div id="app">
+		<button @click="alertCounter">측정</button>
+	</div>
+
+	<script src="/vue.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				counter: 0,
+			},
+			methods: {
+				alertCounter: function() {
+					var t0 = performance.now();
+					this.counterMethod();
+					var t1 = performance.now();
+					console.log('counterMethod: ' + (t1 - t0) + 'ms');
+
+					t0 = performance.now();
+					this.counterMethod();
+					t1 = performance.now();
+					console.log('counterMethod: ' + (t1 - t0) + 'ms');
+					
+					t0 = performance.now();
+					this.computedCounter;
+					t1 = performance.now();
+					console.log('computedCounter: ' + (t1 - t0) + 'ms');
+					
+					t0 = performance.now();
+					this.computedCounter;
+					t1 = performance.now();
+					console.log('computedCounter: ' + (t1 - t0) + 'ms');
+					
+					t0 = performance.now();
+					this.computedCounter;
+					t1 = performance.now();
+					console.log('computedCounter: ' + (t1 - t0) + 'ms');
+					
+					t0 = performance.now();
+					this.computedCounter;
+					t1 = performance.now();
+					console.log('computedCounter: ' + (t1 - t0) + 'ms');
+				},
+				counterMethod: function() {
+					for(var i=0; i<=1000000; i++)
+					{
+						this.counter += 1;
+					}
+					return this.counter;
+				}
+			},
+			computed: {
+				computedCounter: function() {
+					for(var i=0; i<=1000000; i++)
+					{
+						this.counter += 1;
+					}
+					return this.counter;
+				},
+				// now: function() {
+				// 	return Date.now();
+				// },
+			},
+		});
+	</script>
+	
+</body>
+</html>
